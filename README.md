@@ -98,3 +98,35 @@ opt_aoa_bionic = angles(idx_max_bionic);
 
 % Calculate performance improvement
 perf_improvement = (max_ld_bionic - max_ld_naca) / max_ld_naca * 100;
+## Repository Structure
+
+- `/docs`: Technical analysis report and documentation
+- `/matlab`: MATLAB scripts for aerodynamic analysis
+- `/python`: Python visualization scripts
+- `/fluent`: ANSYS Fluent journal files for CFD simulation
+- `/react`: Interactive React visualization components
+## Future Work
+
+The current analysis provides significant insights into the aerodynamic and acoustic performance of the bionic owl wing airfoil. Future extensions of this work could include:
+
+- **Reynolds Number Study**: Investigate performance across various Reynolds numbers ranging from 5,000 to 50,000 to assess scalability of benefits
+- **Additional Biomimetic Features**: Incorporate owl wing serrations, velvet-like surface structures, and leading-edge comb features
+- **Optimization Framework**: Develop a parameterized model with automated optimization using genetic algorithms or adjoint methods
+- **Experimental Validation**: Fabricate physical prototypes for wind tunnel testing to validate computational predictions
+- **Application-Specific Design**: Adapt the airfoil geometry for specific applications such as UAV propellers, wind turbine blades, and HVAC systems
+- **Machine Learning Integration**: Train ML models on the simulation data to enable rapid prediction of performance for new geometry variations
+
+## About the Creator
+
+**Arman Shaikh** is a student at Sharad Reshmi College with a passion for computational fluid dynamics and biomimetic design. His research interests include:
+
+- Biologically-inspired engineering solutions
+- Computational methods in fluid dynamics
+- Aeroacoustic analysis and noise reduction
+- Scientific visualization and interactive data exploration
+
+This project represents his work in applying advanced computational techniques to analyze and understand how nature's designs can inspire more efficient engineering solutions.
+
+Connect with Arman:
+- Email: [armanshaikh9485@gmail.com]
+- GitHub: [github.com/arman2289]
