@@ -9,7 +9,7 @@ This research explores how biomimetic principles from owl wing morphology can im
 ## Research Methodology
 
 ### Data Collection & Geometry Creation
-1. Gathered owl wing cross-section data from published research (Liu et al., 2014)
+1. Gathered owl wing cross-section data from zoology laboratory
 2. Extracted coordinates from 40% wingspan location
 3. Developed parametric model of the bionic airfoil using CAD software
 4. Generated comparison NACA 0006 airfoil using standard equations
