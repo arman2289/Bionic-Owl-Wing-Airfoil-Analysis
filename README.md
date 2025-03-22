@@ -100,11 +100,11 @@ opt_aoa_bionic = angles(idx_max_bionic);
 perf_improvement = (max_ld_bionic - max_ld_naca) / max_ld_naca * 100;
 ## Repository Structure
 
-- `/docs`: Technical analysis report and documentation
-- `/matlab`: MATLAB scripts for aerodynamic analysis
-- `/python`: Python visualization scripts
-- `/fluent`: ANSYS Fluent journal files for CFD simulation
-- `/react`: Interactive React visualization components
+- `/docs`: Technical analysis report with methodology details and complete findings
+- `/matlab`: MATLAB scripts for processing CFD data and calculating performance metrics
+- `/python`: Python visualization scripts for flow field and acoustic data analysis
+- `/fluent`: ANSYS Fluent journal files containing CFD simulation setup parameters
+- `/react`: Interactive React/TypeScript visualization components for dynamic exploration
 
 ## Future Work
 
