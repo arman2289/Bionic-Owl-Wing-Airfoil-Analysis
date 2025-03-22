@@ -1,0 +1,325 @@
+;; Fluent Journal File for Bionic Owl Wing Airfoil Analysis
+;; Author: Arman Shaikh
+;; Sharad Reshmi College
+
+;; This journal file contains setup commands for the CFD analysis
+;; of a bionic owl wing airfoil at Reynolds number 12,300
+
+;; 1. Set up flow domain and solver parameters
+/file/set-batch-options
+yes
+yes
+yes
+no
+
+;; Read mesh file
+/file/read-case
+owl_bionic_airfoil_mesh.msh
+yes
+
+;; Check mesh quality
+/mesh/check
+/mesh/check-domain
+
+;; Set up solver settings for Large Eddy Simulation
+/define/models/solver/density-based-implicit yes
+/define/models/unsteady-1st-order? no
+/define/models/unsteady-2nd-order? yes
+/define/models/viscous/les? yes
+/define/models/viscous/les/wale-model? yes
+
+;; Set material properties
+/define/materials/change-create
+air
+air
+yes
+incompressible-ideal-gas
+no
+no
+yes
+sutherland
+1.716e-5
+273.11
+110.56
+no
+no
+no
+no
+no
+
+;; Set operating conditions
+/define/operating-conditions/operating-pressure
+101325
+/define/operating-conditions/gravity
+yes
+0
+-9.81
+0
+
+;; Set boundary conditions
+;; Inlet: Velocity inlet with 7.5 m/s
+/define/boundary-conditions/set/velocity-inlet
+inlet
+yes
+yes
+yes
+0
+no
+7.5
+no
+0
+no
+0
+yes
+5
+10
+no
+yes
+1
+0
+0
+
+;; Outlet: Pressure outlet
+/define/boundary-conditions/set/pressure-outlet
+outlet
+yes
+no
+0
+no
+yes
+no
+300
+no
+yes
+5
+10
+no
+yes
+1
+0
+0
+
+;; Airfoil: Wall with no-slip condition
+/define/boundary-conditions/set/wall
+airfoil-wall
+0
+no
+0
+no
+0
+no
+no
+0
+no
+0
+no
+0.5
+no
+1
+
+;; Set up periodic conditions
+/define/boundary-conditions/set/periodic-shadow
+sp1
+sp2
+yes
+translational
+no
+0
+0
+0.2
+0
+no
+
+;; Set reference values
+/report/reference-values/compute/velocity-inlet
+inlet
+/report/reference-values/area
+11.6e-6
+/report/reference-values/density
+1.225
+/report/reference-values/length
+0.024
+/report/reference-values/velocity
+7.5
+/report/reference-values/viscosity
+1.7894e-05
+
+;; Set discretization schemes
+/solve/set/discretization-scheme/pressure
+10
+/solve/set/discretization-scheme/density
+1
+/solve/set/discretization-scheme/mom
+1
+/solve/set/discretization-scheme/k
+1
+/solve/set/under-relaxation/pressure
+0.3
+/solve/set/under-relaxation/density
+1
+/solve/set/under-relaxation/mom
+0.7
+/solve/set/under-relaxation/k
+0.8
+
+;; Enable FW-H acoustics model
+/define/models/acoustics/fwh? yes
+/define/models/acoustics/set-receivers
+yes
+12
+receiver-1.srec
+receiver-2.srec
+receiver-3.srec
+receiver-4.srec
+receiver-5.srec
+receiver-6.srec
+receiver-7.srec
+receiver-8.srec
+receiver-9.srec
+receiver-10.srec
+receiver-11.srec
+receiver-12.srec
+
+;; Set monitor points for lift and drag
+/solve/monitors/force/set-lift-monitor
+lift-monitor
+yes
+"airfoil-wall"
+no
+no
+yes
+0
+1
+0
+yes
+"cl-history.out"
+yes
+/solve/monitors/force/set-drag-monitor
+drag-monitor
+yes
+"airfoil-wall"
+no
+no
+yes
+1
+0
+0
+yes
+"cd-history.out"
+yes
+
+;; Initialize flow field
+/solve/initialize/set-defaults
+velocity-magnitude
+yes
+7.5
+velocity-x
+yes
+7.5
+velocity-y
+yes
+0
+velocity-z
+yes
+0
+temperature
+no
+300
+turbulent-kinetic-energy
+yes
+0.01
+turbulent-dissipation-rate
+yes
+10
+/solve/initialize/initialize-flow
+
+;; Set up time-dependent parameters
+/solve/set/time-step
+1e-5
+/solve/set/max-iterations-per-time-step
+20
+/solve/dual-time-iterate
+5000
+1
+
+;; Setup data exports
+;; Pressure on airfoil surface
+/file/export/ascii
+surface-pressure.dat
+yes
+airfoil-wall
+("pressure")
+()
+yes
+no
+
+;; Velocity field for flow visualization
+/file/export/ascii
+velocity-field.dat
+yes
+interior-fluid
+("velocity-magnitude" "x-velocity" "y-velocity" "z-velocity")
+()
+yes
+no
+
+;; Surface pressure gradient for acoustic analysis
+/file/export/ascii
+dp-dt-field.dat
+yes
+airfoil-wall
+("dp/dt")
+()
+yes
+no
+
+;; Setup calculation for additional angles of attack
+;; Run the same analysis for angles 0, 1.5, 3, 4.5, 6, 7.5, 9 degrees
+;; Below is sample for 6 degrees - would be repeated for each angle
+
+;; Adjust inlet velocity components for 6 degree angle of attack
+/define/boundary-conditions/set/velocity-inlet
+inlet
+yes
+yes
+yes
+0
+no
+7.45846
+no
+0.78407
+no
+0
+yes
+5
+10
+no
+yes
+1
+0
+0
+
+;; Initialize and solve
+/solve/initialize/initialize-flow
+/solve/dual-time-iterate
+5000
+1
+
+;; Export results for this angle
+/file/export/ascii
+pressure-6deg.dat
+yes
+airfoil-wall
+("pressure")
+()
+yes
+no
+
+;; Save case and data files
+/file/write-case-data
+bionic-airfoil-6deg.cas.gz
+yes
+
+;; Exit Fluent
+/exit
+yes
