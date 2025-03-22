@@ -105,6 +105,7 @@ perf_improvement = (max_ld_bionic - max_ld_naca) / max_ld_naca * 100;
 - `/python`: Python visualization scripts
 - `/fluent`: ANSYS Fluent journal files for CFD simulation
 - `/react`: Interactive React visualization components
+
 ## Future Work
 
 The current analysis provides significant insights into the aerodynamic and acoustic performance of the bionic owl wing airfoil. Future extensions of this work could include:
