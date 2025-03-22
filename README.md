@@ -82,39 +82,6 @@ This research explores how biomimetic principles from owl wing morphology can im
 
 3. **Data Interpretation:**
    Separating physical flow features from numerical artifacts required careful analysis of the results. I implemented time-averaging over 1000 time steps after reaching statistical steady-state to obtain reliable mean flow properties.
-   ## Repository Structure
-
-- `/docs`: Technical analysis report with methodology details and complete findings
-- `/matlab`: MATLAB scripts for processing CFD data and calculating performance metrics
-- `/python`: Python visualization scripts for flow field and acoustic data analysis
-- `/fluent`: ANSYS Fluent journal files containing CFD simulation setup parameters
-- `/react`: Interactive React/TypeScript visualization components for dynamic exploration
-
-## Future Work
-
-The current analysis provides significant insights into the aerodynamic and acoustic performance of the bionic owl wing airfoil. Future extensions of this work could include:
-
-- **Reynolds Number Study**: Investigate performance across various Reynolds numbers ranging from 5,000 to 50,000 to assess scalability of benefits
-- **Additional Biomimetic Features**: Incorporate owl wing serrations, velvet-like surface structures, and leading-edge comb features
-- **Optimization Framework**: Develop a parameterized model with automated optimization using genetic algorithms or adjoint methods
-- **Experimental Validation**: Fabricate physical prototypes for wind tunnel testing to validate computational predictions
-- **Application-Specific Design**: Adapt the airfoil geometry for specific applications such as UAV propellers, wind turbine blades, and HVAC systems
-- **Machine Learning Integration**: Train ML models on the simulation data to enable rapid prediction of performance for new geometry variations
-
-## About the Creator
-
-**Arman Shaikh** is a student at Sharad Reshmi College with a passion for computational fluid dynamics and biomimetic design. His research interests include:
-
-- Biologically-inspired engineering solutions
-- Computational methods in fluid dynamics
-- Aeroacoustic analysis and noise reduction
-- Scientific visualization and interactive data exploration
-
-This project represents his work in applying advanced computational techniques to analyze and understand how nature's designs can inspire more efficient engineering solutions.
-
-Connect with Arman:
-- Email: [armanshaikh9485@gmail.com]
-- GitHub: [github.com/arman2289]
 
 ## Code Documentation
 
