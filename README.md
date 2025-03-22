@@ -82,23 +82,7 @@ This research explores how biomimetic principles from owl wing morphology can im
 
 3. **Data Interpretation:**
    Separating physical flow features from numerical artifacts required careful analysis of the results. I implemented time-averaging over 1000 time steps after reaching statistical steady-state to obtain reliable mean flow properties.
-
-## Code Documentation
-
-### MATLAB Analysis Script
-The main analysis script processes CFD data to extract performance metrics:
-```matlab
-% Example code snippet from OwlWingAirfoilAnalysis.m
-% Calculate lift-to-drag ratio for bionic airfoil
-ld_bionic = cl_bionic ./ cd_bionic;
-
-% Find optimum AOA for bionic airfoil
-[max_ld_bionic, idx_max_bionic] = max(ld_bionic);
-opt_aoa_bionic = angles(idx_max_bionic);
-
-% Calculate performance improvement
-perf_improvement = (max_ld_bionic - max_ld_naca) / max_ld_naca * 100;
-## Repository Structure
+   ## Repository Structure
 
 - `/docs`: Technical analysis report with methodology details and complete findings
 - `/matlab`: MATLAB scripts for processing CFD data and calculating performance metrics
@@ -131,3 +115,19 @@ This project represents his work in applying advanced computational techniques t
 Connect with Arman:
 - Email: [armanshaikh9485@gmail.com]
 - GitHub: [github.com/arman2289]
+
+## Code Documentation
+
+### MATLAB Analysis Script
+The main analysis script processes CFD data to extract performance metrics:
+```matlab
+% Example code snippet from OwlWingAirfoilAnalysis.m
+% Calculate lift-to-drag ratio for bionic airfoil
+ld_bionic = cl_bionic ./ cd_bionic;
+
+% Find optimum AOA for bionic airfoil
+[max_ld_bionic, idx_max_bionic] = max(ld_bionic);
+opt_aoa_bionic = angles(idx_max_bionic);
+
+% Calculate performance improvement
+perf_improvement = (max_ld_bionic - max_ld_naca) / max_ld_naca * 100;
